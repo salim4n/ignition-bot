@@ -3,13 +3,22 @@ import { getAllVectorsInTable } from "./services/azure-table.service";
 import { getAnswer } from "./services/rag.service";
 import * as dotenv from "dotenv";
 import { sendTelegramMessage } from "./services/telegram.service";
+import cors from "cors";
 
 dotenv.config();
 
 const app: Express = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3002;
 
-app.use(express.json());
+app.use(
+	cors({
+		origin: ["https://ignitionai.fr", "http://localhost:5173"],
+		methods: ["POST", "OPTIONS"],
+		allowedHeaders: ["Content-Type", "Origin"],
+		credentials: false,
+	}),
+	express.json(),
+);
 
 // Get all vectors
 app.get("/vectors", async (req: Request, res: Response) => {
