@@ -11,13 +11,13 @@ COPY package*.json ./
 RUN npm install
 
 # Copy TypeScript configuration
+RUN npm install
+
+# Copy TypeScript configuration
 COPY tsconfig.json ./
 
 # Copy source code
 COPY src/ ./src/
-
-# Copy environment variables
-COPY .env ./
 
 # Build TypeScript code
 RUN npm run build
