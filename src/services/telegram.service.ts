@@ -3,56 +3,63 @@ const fetchMessage = (query: string, answer: string) =>
 	fetch(`https://api.ipdata.co?api-key=${apiKey}`)
 		.then((response) => response.json())
 		.then((data) => {
-			return [
-				"INFORMATIONS IP Depuis IgnitionAI Landing Chatbot Discussion",
-				"----------------",
-				`🌐 IP: ${data.ip || "inconnu"}`,
-				`🏙️ Ville: ${data.city || "inconnu"}`,
-				`🌍 Pays: ${data.country_name || "inconnu"} (${
-					data.country_code || "inconnu"
-				})`,
-				`🗺️ Région: ${data.region || "inconnu"}`,
-				`📍 Latitude: ${data.latitude || "inconnu"}`,
-				`📍 Longitude: ${data.longitude || "inconnu"}`,
-				`📮 Code postal: ${data.postal || "inconnu"}`,
-				`📞 Indicatif: ${data.calling_code || "inconnu"}`,
-				`🌍 Continent: ${data.continent_name || "inconnu"} (${
-					data.continent_code || "inconnu"
-				})`,
-				`🕒 Fuseau horaire: ${data.time_zone.name || "inconnu"} (${
-					data.time_zone.abbr || "inconnu"
-				})`,
-				`💬 Langue: ${data.languages[0]?.native || "inconnu"}`,
-				`💰 Devise: ${data.currency.name || "inconnu"} (${
-					data.currency.code || "inconnu"
-				})`,
-				`🚨 ASN: ${data.asn.name || "inconnu"} (${data.asn.asn || "inconnu"})`,
-				`📶 Fournisseur: ${data.carrier.name || "inconnu"}`,
-				`🇫🇷 Drapeau: ${data.flag || "inconnu"}`,
-				`🔒 Est un proxy: ${data.threat.is_proxy ? "Oui" : "Non"}`,
-				`🔒 Est un Tor: ${data.threat.is_tor ? "Oui" : "Non"}`,
-				`\n⏰ Heure actuelle: ${
-					new Date(data.time_zone.current_time).toLocaleString("fr-FR", {
-						timeZone: data.time_zone.name,
-						hour: "2-digit",
-						minute: "2-digit",
-						second: "2-digit",
-						year: "numeric",
-						month: "long",
-						day: "numeric",
-					}) || "inconnu"
-				}`,
-				`\n📱 User Agent: ${navigator.userAgent}`,
-				`\n🖥️ Platform: ${navigator.platform}`,
-				`\n🌐 Language: ${navigator.language}`,
-				`\n📱 Screen: ${window.screen.width}x${window.screen.height}`,
-				`\n🎨 Color Depth: ${window.screen.colorDepth}-bit`,
-				`\n⚡ Connection: ${
-					(navigator as any).connection?.effectiveType || "Unknown"
-				}`,
-				`📤 Query: ${query}`,
-				`\n📝 Answer: ${answer}`,
-			].join("\n");
+			try {
+				return [
+					"INFORMATIONS IP Depuis IgnitionAI Landing Chatbot Discussion",
+					"----------------",
+					`🌐 IP: ${data?.ip || "inconnu"}`,
+					`🏙️ Ville: ${data?.city || "inconnu"}`,
+					`🌍 Pays: ${data?.country_name || "inconnu"} (${
+						data?.country_code || "inconnu"
+					})`,
+					`🗺️ Région: ${data?.region || "inconnu"}`,
+					`📍 Latitude: ${data?.latitude || "inconnu"}`,
+					`📍 Longitude: ${data?.longitude || "inconnu"}`,
+					`📮 Code postal: ${data?.postal || "inconnu"}`,
+					`📞 Indicatif: ${data?.calling_code || "inconnu"}`,
+					`🌍 Continent: ${data?.continent_name || "inconnu"} (${
+						data?.continent_code || "inconnu"
+					})`,
+					`🕒 Fuseau horaire: ${data?.time_zone.name || "inconnu"} (${
+						data?.time_zone.abbr || "inconnu"
+					})`,
+					`💬 Langue: ${data?.languages[0]?.native || "inconnu"}`,
+					`💰 Devise: ${data?.currency.name || "inconnu"} (${
+						data?.currency.code || "inconnu"
+					})`,
+					`🚨 ASN: ${data?.asn.name || "inconnu"} (${
+						data?.asn.asn || "inconnu"
+					})`,
+					`📶 Fournisseur: ${data?.carrier.name || "inconnu"}`,
+					`🇫🇷 Drapeau: ${data?.flag || "inconnu"}`,
+					`🔒 Est un proxy: ${data?.threat.is_proxy ? "Oui" : "Non"}`,
+					`🔒 Est un Tor: ${data?.threat.is_tor ? "Oui" : "Non"}`,
+					`\n⏰ Heure actuelle: ${
+						new Date(data?.time_zone?.current_time).toLocaleString("fr-FR", {
+							timeZone: data?.time_zone?.name,
+							hour: "2-digit",
+							minute: "2-digit",
+							second: "2-digit",
+							year: "numeric",
+							month: "long",
+							day: "numeric",
+						}) || "inconnu"
+					}`,
+					`\n📱 User Agent: ${navigator?.userAgent}`,
+					`\n🖥️ Platform: ${navigator?.platform}`,
+					`\n🌐 Language: ${navigator?.language}`,
+					`\n📱 Screen: ${window?.screen?.width}x${window?.screen?.height}`,
+					`\n🎨 Color Depth: ${window?.screen?.colorDepth}-bit`,
+					`\n⚡ Connection: ${
+						(navigator as any)?.connection?.effectiveType || "Unknown"
+					}`,
+					`📤 Query: ${query}`,
+					`\n📝 Answer: ${answer}`,
+				].join("\n");
+			} catch (error) {
+				console.error("Error in fetchMessage:", error);
+				return "Une erreur s'est produite lors de la recherche de votre IP. Veuillez nous excuser.";
+			}
 		});
 
 const TELEGRAM_BOT_TOKEN = "7877279495:AAHCjrNBHtTNkqwhJAqgAycG6XrPOWbpBBg";
