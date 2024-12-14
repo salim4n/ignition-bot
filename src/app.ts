@@ -10,6 +10,7 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT || 3002;
 
+
 app.use(
 	cors({
 		origin: ["https://ignitionai.fr", "http://localhost:5173"],
