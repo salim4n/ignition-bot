@@ -136,8 +136,4 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 
 ## Contact
 
-Pour toute question ou suggestion, veuillez contacter [Salim Laimeche](mailto:laimeche160@gmail.com).
-
----
-
-N'hésitez pas à personnaliser ce README en fonction des spécificités de votre projet et des informations supplémentaires que vous souhaitez inclure.
+Pour toute question ou suggestion, veuillez contacter [Salim Laimeche](mailto:laimeche160@gmail.com)
