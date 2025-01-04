@@ -1,5 +1,5 @@
-const TELEGRAM_BOT_TOKEN = "7877279495:AAHCjrNBHtTNkqwhJAqgAycG6XrPOWbpBBg";
-const CHAT_ID = "981600974";
+const TELEGRAM_BOT_TOKEN = process.env.BOT_TOKEN;
+const CHAT_ID = process.env.CHAT_ID;
 
 export const sendTelegramMessage = async (query: string, answer: string) => {
 	if (!TELEGRAM_BOT_TOKEN || !CHAT_ID) {
