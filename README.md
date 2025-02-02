@@ -22,6 +22,9 @@ Ce projet est un microservice basé sur Express et TypeScript, intégrant LangCh
 
 ## Installation
 
+### Créer la table Azure
+[![Youtube video](http://img.youtube.com/vi/aZIluap-4mo/0.jpg)](http://www.youtube.com/watch?v=aZIluap-4mo "How to create an azure table on azure")
+
 ### Avec Docker
 
 1. Clonez le dépôt :
